@@ -78,7 +78,7 @@ We applied KMeans, DBSCAN and Hierarchcal Clustering functions to the different 
 ### Radar Charts
 
 1. Customers:
-[customer_radar_plot](images/radar_plot_customers.jpg  "Customer Radar Plot")
+![customer_radar_plot](images/radar_plot_customers.jpg  "Customer Radar Plot ")
 
 
 2. Banking Behaviour:
