@@ -80,6 +80,12 @@ We applied KMeans, DBSCAN and Hierarchcal Clustering functions to the different 
 1. Customers:
 ![customer_radar_plot](images/radar_plot_customers.jpg  "Customer Radar Plot ")
 
+**Observations**: It seems that the `income`, `haschildren` and `age` the dominant criteria for clustering these datapoints. 
+
+- Cluster 1 are high-income-earners, no children and middle-aged. 
+- Cluster 2 are medium-income-earners, with children and aged older. 
+- Cluster 3 are lesser-income-earners, maybe with children, and are the youngest aged. 
+
 
 2. Banking Behaviour:
 
@@ -91,7 +97,7 @@ Below are the radar charts showing clusters of Banking Behavior, using the Agglo
 ![cluster 3](images/cluster3.png "Cluster 3")
 ![cluster 4](images/cluster4.png "Cluster 4")
 
-**Observations**: It seems that the `numAccounts` and `numnumTnxMonthlyAverage` are the dominant criteria for clustering these datapoints.
+**Observations**: It seems that the `numAccounts` and `numTnxMonthlyAverage` are the dominant criteria for clustering these datapoints. It makes sense because the greater the number of accounts a customer has, the more likely they are to make more frequent transactions on any of those accounts. 
 
 
 ### Dimensionality Reduction with PCA
@@ -99,13 +105,32 @@ Below are the radar charts showing clusters of Banking Behavior, using the Agglo
 Plot of the expanded variance ratio for the customer features:
 ![BankingBehavior](images/expanded_variance_ratio_banking_behavior.png "Expanded variance ratio")
 
-(See the notebook for the variance ratio of the customers). In both cases, the first 2 components contribute more than 50% of the total. 
+Note how the first 2 components contribute towards more than 50% of the total.
+
+(See the notebook for the variance ratio of the customers). 
+
+**Visualization with PCA for the Customers model**
+
+![Visualization with PCA](images/customer_PCA.png "Visualization with PCA")
+**Observation**: 2 clusters are clearly separated with a third spread thinly through the boundary of the other 2. It is possible that visualizing with 2 other components will feature that one more prominently. 
+
+**Visualization with PCA for the Banking Behaviour model**
+
+![Visualization with PCA](images/PCA_Agglomerative.png "Visualization with PCA")
+**Observation**: There appear to be 5 clear groupings (probably based on the 5-class categorical `incomeToSavingsRanking` feature) but the clustering algorithms did not sort according to these groups, showing that this categorical feature did not dominate the other features. 
+
+
+
 
 ## Challenges:
 1. Feature selection: it was a challenge to decide what information was relevant. For example, we wanted to keep as much information from the addresses as possible, but soon realized that would not be practical.
 2. Handling categories: We observed that categories tended to bias the clustering i.e. the clustering functions would just group the datapoints by the dominant features like gender. We had to fine tune scaling parameters to offset this tendency.
 3. Working with assumptions. We noticed that some customers in the bank did not have any accounts, but we had to assume that their data was still valid i.e. they had other banking accounts and were still active clients. We also had to make assumptions about the meaning of some columns e.g. that income was *montly* income and not *yearly* income. 
-4. Understanding PCA
 
 
+## Future Goals
+
+Most of goals would have been about **feature engineering**. Given more time, we would have liked to combine the features from the customers-model and the banking-behavior-models to see what cluster results would have looked like. We would have also liked to correlate between age, income and marital status to better understand what the marital status classes meant. 
+
+We would have also liked to done more **PCA** analysis, creating models from 2-3 dominant components and visualizing their output.
 
