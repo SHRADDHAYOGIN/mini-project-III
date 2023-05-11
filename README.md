@@ -57,8 +57,14 @@ Scaling: We applied sklearn scalar functions to the model dataset like `MinMaxSc
 We applied KMeans, DBSCAN and Hierarchcal Clustering functions to the different datasets.
 
 ## Results
+### Clustering Outcomes
 
 **Customer dataset**
+| Type of Clustering    | n_clusters |
+| --------------------- | ------- |
+| KMeans                | 3       |
+| DBSCAN                | 2       |
+| Aggloremative         | 2       |
 
 
 **Banking Behavior**
@@ -69,14 +75,29 @@ We applied KMeans, DBSCAN and Hierarchcal Clustering functions to the different 
 | DBSCAN                | 5       |
 | Aggloremative         | 6       |
 
+### Radar Charts
+Below are the radar charts showing clusters of Banking Behavior, using the Agglomerative function. Please see the notebooks for the other outcomes. 
+
 ![cluster 0](images/cluster0.png "Cluster 0")
 ![cluster 1](images/cluster1.png "Cluster 1")
 ![cluster 2](images/cluster2.png "Cluster 2")
 ![cluster 3](images/cluster3.png "Cluster 3")
 ![cluster 4](images/cluster4.png "Cluster 4")
 
+**Observations**: It seems that the `numAccounts` and `numnumTnxMonthlyAverage` are the dominant criteria for clustering these datapoints.
 
 
-# Stretch: Visualizing KMeans Clustering
+### Dimensionality Reduction with PCA
+
+Plot of the expanded variance ratio for the customer features:
+![BankingBehavior](images/expanded_variance_ratio_banking_behavior.png "Expanded variance ratio")
+
+(See the notebook for the variance ratio of the customers). In both cases, the first 2 components contribute more than 50% of the total. 
+
+## Challenges:
+1. Feature selection: it was a challenge to decide what information was relevant. For example, we wanted to keep as much information from the addresses as possible, but soon realized that would not be practical.
+2. Handling categories: We observed that categories tended to bias the clustering i.e. the clustering functions would just group the datapoints by the dominant features like gender. We had to fine tune scaling parameters to offset this tendency.
+3. Working with assumptions. We noticed that some customers in the bank did not have any accounts, but we had to assume that their data was still valid i.e. they had other banking accounts and were still active clients. We also had to make assumptions about the meaning of some columns e.g. that income was *montly* income and not *yearly* income. 
+
 
 
