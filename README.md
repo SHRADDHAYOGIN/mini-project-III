@@ -76,6 +76,13 @@ We applied KMeans, DBSCAN and Hierarchcal Clustering functions to the different 
 | Aggloremative         | 6       |
 
 ### Radar Charts
+
+1. Customers:
+[customer_radar_plot](images/radar_plot_customers.jpg  "Customer Radar Plot")
+
+
+2. Banking Behaviour:
+
 Below are the radar charts showing clusters of Banking Behavior, using the Agglomerative function. Please see the notebooks for the other outcomes. 
 
 ![cluster 0](images/cluster0.png "Cluster 0")
@@ -98,6 +105,7 @@ Plot of the expanded variance ratio for the customer features:
 1. Feature selection: it was a challenge to decide what information was relevant. For example, we wanted to keep as much information from the addresses as possible, but soon realized that would not be practical.
 2. Handling categories: We observed that categories tended to bias the clustering i.e. the clustering functions would just group the datapoints by the dominant features like gender. We had to fine tune scaling parameters to offset this tendency.
 3. Working with assumptions. We noticed that some customers in the bank did not have any accounts, but we had to assume that their data was still valid i.e. they had other banking accounts and were still active clients. We also had to make assumptions about the meaning of some columns e.g. that income was *montly* income and not *yearly* income. 
+4. Understanding PCA
 
 
 
